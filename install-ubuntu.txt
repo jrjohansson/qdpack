@@ -1,0 +1,65 @@
+
+Install the following packages:
+
+sudo apt-get install liblapack-dev
+sudo apt-get install libatlas-base-dev
+sudo apt-get install libgsl0-dev
+sudo apt-get install libgsl0-dbg
+sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev libatlas3gf-sse2
+sudo apt-get install libf2c2 libf2c2-dev f2c
+sudo apt-get install libsuitesparse-dev 
+
+To build the simulation code by running "make" on the command line:
+
+rob@rob01$ make
+(cd lib && make CFLAGS='-I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib' LDFLAGS='-lumfpack -lamd -lgsl -lf77blas -llapack -lcblas -latlas -lm')
+make[1]: Entering directory `/home/rob/Desktop/qdpack/lib'
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o mlib.o mlib.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o gsl_ext_expm_complex.o gsl_ext_expm_complex.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o integrate.o integrate.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o gsl_ext.o gsl_ext.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o entanglement.o entanglement.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o hamiltonian.o hamiltonian.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o quantum_system.o quantum_system.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o density_matrix.o density_matrix.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o operators.o operators.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o misc.o misc.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o master_equation.o master_equation.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o basis_transform.o basis_transform.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o steadystate.o steadystate.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o gsl_ext_sparse.o gsl_ext_sparse.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o steadystate_sparse.o steadystate_sparse.c
+cc -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib   -c -o distribution_functions.o distribution_functions.c
+ar rv libqd.a mlib.o gsl_ext_expm_complex.o gsl_ext_expm_complex.o integrate.o gsl_ext.o entanglement.o hamiltonian.o quantum_system.o density_matrix.o operators.o misc.o master_equation.o basis_transform.o steadystate.o gsl_ext_sparse.o steadystate_sparse.o distribution_functions.o
+ar: creating libqd.a
+a - mlib.o
+a - gsl_ext_expm_complex.o
+a - gsl_ext_expm_complex.o
+a - integrate.o
+a - gsl_ext.o
+a - entanglement.o
+a - hamiltonian.o
+a - quantum_system.o
+a - density_matrix.o
+a - operators.o
+a - misc.o
+a - master_equation.o
+a - basis_transform.o
+a - steadystate.o
+a - gsl_ext_sparse.o
+a - steadystate_sparse.o
+a - distribution_functions.o
+make[1]: Leaving directory `/home/rob/Desktop/qdpack/lib'
+for i in run_2ls_pss run_2ls_sd_range run_ho_ss run_2ls_pss_ni run_2ho_optmech run_2ho_sb_cooling_LG run_qho_dispshift; do \
+                echo Building  $i; \
+		cc -o $i $i.c -I/usr/include/suitesparse -O3 -std=gnu99 -g -Ilib -lumfpack -lamd -lgsl -lf77blas -llapack -lcblas -latlas -lm lib/libqd.a; \
+	done
+Building run_2ls_pss
+Building run_2ls_sd_range
+Building run_ho_ss
+Building run_2ls_pss_ni
+Building run_2ho_optmech
+Building run_2ho_sb_cooling_LG
+Building run_qho_dispshift
+rob@rob01$ 
+
