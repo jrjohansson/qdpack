@@ -11,7 +11,6 @@
 // A CXSparse based matrix backend for QDpack.
 //
 #include <string.h>
-#include <suitesparse/cs.h>
 #include "qdpack_matrix_cxsparse.h"
 
 #define DEBUG 0

@@ -15,7 +15,7 @@
 #ifndef _QDPACK_MATRIX
 #define _QDPACK_MATRIX
 
-#include <suitesparse/cs.h>
+#include <cs.h>
 
 #include <complex.h>
 
