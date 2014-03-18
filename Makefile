@@ -9,6 +9,9 @@
 # ubuntu desktop
 CFLAGS= -Wall -I/usr/include/suitesparse -O3 -std=gnu99 -g -Iqdpack -I..
 LDFLAGS=-lm -lumfpack -lamd -lgsl -lf77blas -llapack -lcblas -latlas -lcxsparse
+# osx
+#CFLAGS= -Wall -I/opt/local/include -O3 -std=gnu99 -g -Iqdpack -I..
+#LDFLAGS=-L/opt/local/lib -lm -lumfpack -lamd -lgsl  -llapack -lcblas -lcxsparse
 #CC=clang
 #CC=gcc
 
