@@ -10,6 +10,8 @@
 #ifndef _QDPACK
 #define _QDPACK
 
+#define USE_DENSE
+
 //
 // @mainpage Quantum Dynamics Package
 //

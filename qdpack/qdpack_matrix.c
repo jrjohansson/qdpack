@@ -6,6 +6,13 @@
 // http://dml.riken.jp/~rob/qdpack.html
 //------------------------------------------------------------------------------
 
+#include <qdpack/qdpack.h>
+
 // select matrix backend
+#ifdef USE_DENSE
+#include "qdpack_matrix_gsl.c"
+#endif
+
+#ifdef USE_SPARSE
 #include "qdpack_matrix_cxsparse.c"
-//#include "qdpack_matrix_gsl.c"
+#endif

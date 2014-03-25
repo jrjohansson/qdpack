@@ -15,6 +15,8 @@
 #ifndef _QDPACK_MATRIX
 #define _QDPACK_MATRIX
 
+#define GSL
+
 #include <stdio.h>
 
 #include <gsl/gsl_matrix.h>
